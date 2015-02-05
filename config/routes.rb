@@ -15,4 +15,12 @@ Rails.application.routes.draw do
 
   resources :post_tags
 
+  resources :posts
+
+  resources :replies
+
+  resources :tags
+
+  resources :post_tags
+
 end
