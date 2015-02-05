@@ -1,1 +1,11 @@
-<h1>HI I"M A POSTS/INDEX WOOOO!</h1>
+<h1>Animaux!</h1>
+<h4>One stop for all the internet's cutest animals</h4>
+
+<div>
+  <img src="http://lorempixel.com/300/200/animals/">
+  <ul>
+<% @posts.each do |post| %>
+<li><a href='/posts/<%= post.id %>'><img src="<%= post.image_url %>"></a>  </li>
+<% end %>
+</ul>
+</div>

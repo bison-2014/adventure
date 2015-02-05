@@ -1,1 +1,24 @@
-<h1>HI I"M A POSTS/SHOW WOOOO!</h1>
+<h1>Animaux!</h1>
+<h4>One stop for all the internet's cutest animals</h4>
+
+<h2><%= @post.title %></h2>
+<h5>by <%= @post.author.username %>  <%= @post.created_at %></h5><br><br>
+
+<img src="<%= @post.image_url %>">
+<div id='votes'>
+<%= button_to '', action: 'voteup' %>
+<%= button_to '', action: 'votedown' %>
+<%= @post.tags.pluck(:name).join(' ') %>
+</div><br><br>
+
+<div id='comments'>
+  <% @post.comments.each do |comment| %>
+  <%= comment.text %><br>
+  <%= comment.commenter.username %><br><br>
+  <% comment.replies.each do |reply| %>
+  <li><%= reply.text %></li>
+  <li><%= reply.replier.username %></li>
+  <% end %>
+  <br><br>
+  <% end %>
+</div>
