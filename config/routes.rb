@@ -7,4 +7,12 @@ Rails.application.routes.draw do
 
   root 'posts#index'
 
+  resources :posts
+
+  resources :replies
+
+  resources :tags
+
+  resources :post_tags
+
 end
