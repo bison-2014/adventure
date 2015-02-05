@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20150205042341) do
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
 
   create_table "post_tags", force: :cascade do |t|
     t.integer  "post_id"
