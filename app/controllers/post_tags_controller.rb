@@ -1,5 +1,3 @@
 class PostTagsController < ApplicationController
 
 end
-
-
