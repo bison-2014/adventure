@@ -1,4 +1,7 @@
 <h1>Log In</h1>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+<% end %>
   <%=form_tag log_in_path do%>
     <%=label_tag :email %>
     <%=text_field_tag :email %><br>
