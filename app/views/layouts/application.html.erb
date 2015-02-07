@@ -24,7 +24,7 @@
         <div id='login-signup'>
           <ul>
             <li><%= link_to "Log In", log_in_path, id: 'login-link', :'data-featherlight' => 'ajax' %></li>
-            <li><%= link_to "Sign Up", new_user_path, remote: true, id: 'signup-link' %></li>
+            <li><%= link_to "Sign Up", new_user_path, id: 'signup-link', :'data-featherlight' => 'ajax' %></li>
           </ul>
         </div>
         <% end %>
