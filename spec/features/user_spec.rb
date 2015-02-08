@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rails_helper'
 
-  describe "The signin procoess" do
+  describe "The signin process" do
     feature 'user can sign up' do
       scenario 'with valid email and password' do
       	visit '/users/new'
