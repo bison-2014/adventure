@@ -6,6 +6,10 @@
   clear: both;
 }
 
+.images-container p {
+  text-align: center;
+}
+
 .tile-images {
   margin: auto;
 }
@@ -65,8 +69,19 @@
   padding: .5%;
   font-size: .85em;
   float: right;
-  margin: 1%;
+  margin: 1% 2% 1% 1%;
   font-weight: bold;
+}
+
+#delete-account {
+  max-width: 10.5%;
+  background-color: $orange;
+  padding: .5%;
+  font-size: .85em;
+  float: right;
+  margin: 1% 2% 1% 1%;
+  font-weight: bold;
+  vertical-align: bottom;
 }
 
 .edit-image {

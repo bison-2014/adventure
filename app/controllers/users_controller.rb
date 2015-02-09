@@ -21,6 +21,13 @@ skip_before_action :verify_authenticity_token
     render '/posts/index'
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to '/'
+  end
+
 private
   def user_params
     params.require(:user).permit(:username, :email, :password)

@@ -1,5 +1,6 @@
 <div class="post-container">
-  <h1>Create a New Post</h1>
+  <h1>Add a New Animal!</h1>
+  <div id="new-animal"><%= image_tag("goat1.gif") %></div>
   <%= form_for :posts, :url => {action: 'create'}, :html => {id: 'upload'} do |f| %>
  Title: <%= f.text_field :title %><br>
   Image Url: <%= f.text_field :image_url %><br>
