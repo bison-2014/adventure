@@ -45,7 +45,7 @@ $(document).ready(function(){
   function changePoints(target, category) {
     var myUrl = $(target).attr('action')
     var id = myUrl.match(ROUTE_ID_MATCHER)[0];
-    var selector = '#' + category + id + '_points';
+    var selector = '#' + category + id+'_points';
     $.ajax({type: 'POST', url: myUrl})
       .done(function(response) {
         var points = $(response).find(selector).text();
