@@ -118,25 +118,39 @@ $(document).ready(function(){
         console.log(response)
         $('#new_comment').remove();
         $('#submit-comment').show();
-        var $div = $('<div>').attr('id', "comments").addClass('comments')
-        // var $h3 = $('<h3>').text('Comments')
-        var $like = $('<input>').attr('type', 'submit').attr('value', 'Like')
-        var $likeForm = $('<form>').attr('method', 'post').attr('action', '/comments/'+response['comment']['post_id']+'/voteup?name='+response['comment']['id']+'').addClass('like_comment_form').append($like)
 
-        var $dislike = $('<input>').attr('type', 'submit').attr('value', 'dislike')
-        var $dislikeForm = $('<form>').attr('method', 'post').attr('action', '/comments/'+response['comment']['post_id']+'/votedown?name='+response['comment']['id']+'').addClass('dislike_comment_form').append($dislike)
-        // var $ajaxform = $("<%= button_to 'Like', {action: 'voteup', controller: 'comments', name: '+response[:id]+' }, form_class: 'like_comment_form' %>")
+        var comment = response['comment'];
+        var user = response['user'];
+        var postId = comment['post_id'];
+        var commentId = comment['id'];
+        var commentText = comment['text'];
+        var username = user['username'];
 
-        var $points = $('<span>').attr('id', 'comment'+response['comment']['id']+'_points').html('0')
+        var likeFormPath = '/comments/'+postId+'/voteup?name='+commentId+''
+        var dislikeFormPath = '/comments/'+postId+'/votedown?name='+commentId+''
+        var newReplyPath = '/replies/new?id='+commentId+''
 
-        var $replyLink = $('<a>').addClass('submit-reply').attr('data-remote', 'true').attr('href', '/replies/new?id='+response['comment']['id']+'').text('Reply To Comment')
+        var pointsDivId = 'comment'+commentId+'_points'
+
+        var $div = $('<div>', {id: "comments", "class": 'comments'});
+        var $like = $('<input>', {type: 'submit', value: 'Like'});
+        var $likeForm = $('<form>', {method: 'post', action: likeFormPath, "class": 'like_comment_form'}).append($like)
 
 
-        var $replyFormDiv = $('<div>').attr('id', 'reply_form'+response['comment']['id']+'')
+        var $dislike = $('<input>', {type: 'submit', value: 'Dislike'})
+        var $dislikeForm = $('<form>', {method: 'post', action: dislikeFormPath, "class": 'dislike_comment_form'}).append($dislike)
+
+
+        var $points = $('<span>').attr('id', pointsDivId).html('0')
+
+        var $replyLink = $('<a>', {"class": 'submit-reply', "data-remote": 'true', href: newReplyPath}).text('Reply To Comment')
+
+
+        var $replyFormDiv = $('<div>').attr('id', 'reply_form'+commentId+'')
         // var $h4 = $('<h4>').text('Reply')
-        var $replyDiv = $('<div>').attr('id', 'replies-for-comment-'+response['comment']['id']+'')
+        var $replyDiv = $('<div>').attr('id', 'replies-for-comment-'+commentId+'')
 
-        $div.append([''+response['user']['username']+'', $('<br>'), ''+response['comment']['text']+''], $('<br>'), $likeForm, $dislikeForm, $points, 'Points', $replyFormDiv, $replyDiv)
+        $div.append([username, $('<br>'), commentText, $('<br>'), $likeForm, $dislikeForm, $points, 'Points', $replyFormDiv, $replyDiv])
 
         $('#opinions').append($div);
         // console.log($form)
@@ -197,7 +211,7 @@ $(document).ready(function(){
        var $tag = $('<span>').addClass('single-tag').text(response['tag']['name'])
       $('#tags').append($tag);
       $('#add_tags').show()
-        // console.log(response) 
+        // console.log(response)
       })
   })
 })
